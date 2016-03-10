@@ -28,14 +28,14 @@ module Grape
 
       # logged-in user ID who has granted permission to the client
       def resource_owner_id
-        env['X-Authenticated-Userid']
+        env['HTTP_X_AUTHENTICATED_USERID']
       end
 
       # TODO
       # comma-separated list of scopes that the end user has authenticated (if available)
-      # def scopes
-      #   env['X-Authenticated-Scope']
-      # end
+      def scopes
+        env['HTTP_X_AUTHENTICATED_SCOPE'].to_s.split(',')
+      end
 
     end
   end
